@@ -19,8 +19,10 @@ ui <- fluidPage(
     leafletOutput("mymap"))))
 
 #read data
-cnt_dat <- read.table("C:/vaibhaw/projects/smart_city/monthly_data/area_count_16x16.txt", header=F)
-loc_dat <- read.table("C:/vaibhaw/projects/smart_city/monthly_data/EV_station_locations.txt", header=F)
+cnt_dat <- read.table("area_count_16x16.txt", header=F)
+loc_dat <- read.table("EV_station_locations.txt", header=F)
+## Gas Station locations
+gsl_dat <- read.table("gas_station_locations.txt", header=F)
 
 minlat <- 42.20 # selected by hit and trial
 minlong <- -83.83
