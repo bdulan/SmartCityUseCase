@@ -64,6 +64,7 @@ server <- function(input, output, session) {
                     lng2=long2_list, lat2=lat2_list,
                     fillColor = 'darkorange', fillOpacity = 2.0*cnt_dat[,1]/max(cnt_dat), weight = 0.2) %>%
       addCircleMarkers(lng=loc_dat[,2], lat=loc_dat[,1], radius = 6, color = "blue", weight=0.2, fillOpacity = 0.4)
+      addCircleMarkers(lng=loc_dat[,2], lat=loc_dat[,1], radius = 6, color = "red", weight=0.2, fillOpacity = 0.4)
     })
 }
 
