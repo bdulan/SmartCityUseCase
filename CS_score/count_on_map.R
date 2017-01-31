@@ -23,6 +23,7 @@ cnt_dat <- read.table("area_count_16x16.txt", header=F)
 loc_dat <- read.table("EV_station_locations.txt", header=F)
 ## Gas Station locations
 gsl_dat <- read.table("gas_station_locations.txt", header=F)
+ecs_dat <- read.table("existing_charging_stations.txt", header=F)
 
 minlat <- 42.20 # selected by hit and trial
 minlong <- -83.83
@@ -63,8 +64,12 @@ server <- function(input, output, session) {
       addRectangles(lng1=long1_list, lat1=lat1_list,
                     lng2=long2_list, lat2=lat2_list,
                     fillColor = 'darkorange', fillOpacity = 2.0*cnt_dat[,1]/max(cnt_dat), weight = 0.2) %>%
-      addCircleMarkers(lng=loc_dat[,2], lat=loc_dat[,1], radius = 6, color = "blue", weight=0.2, fillOpacity = 0.4)
-      addCircleMarkers(lng=loc_dat[,2], lat=loc_dat[,1], radius = 6, color = "red", weight=0.2, fillOpacity = 0.4)
+      addCircleMarkers(lng=loc_dat[,2], lat=loc_dat[,1], radius = 6, color = "red", weight=0.2, fillOpacity = 0.4) %>%
+      # add circles for the existing gas stations
+      addCircleMarkers(lng=gsl_dat[,2], lat=gsl_dat[,1], radius = 7, color = "blue", weight=0.2, fillOpacity = 0.4) %>%
+      # add circles for existing charging stations
+      addCircleMarkers(lng=ecs_dat[,2], lat=ecs_dat[,1], radius = 7, color = "green", weight=0.2, fillOpacity = 0.4)
+      
     })
 }
 
